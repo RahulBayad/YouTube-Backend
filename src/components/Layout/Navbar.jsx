@@ -3,13 +3,16 @@ import { FaYoutube } from "react-icons/fa";
 import {TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon} from "@radix-ui/react-icons";
 import { NavLink } from 'react-router-dom';
+import { toggleSidebar } from '../../redux/MenuSlice.js';
+import { useDispatch } from 'react-redux';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   return (
     <nav className="grid grid-cols-3 px-4 h-full ">
 
             <div id="menu_Logo" className=" flex gap-5 items-center ">
-                <span class="material-symbols-outlined text-[1.7rem] font-extralight cursor-pointer">menu</span>
+                <span onClick={()=>dispatch(toggleSidebar())} class="material-symbols-outlined text-[1.7rem] font-extralight cursor-pointer">menu</span>
                 <NavLink className="flex gap-1 items-center">
                     <FaYoutube  className="text-[1.7rem] text-red-500"/>
                     <span className="text-[1.1rem] font-thin text-gray-700 tracking-wide" style={{fontFamily:"Anton"}}>YouTube</span>

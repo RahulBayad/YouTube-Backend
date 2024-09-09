@@ -6,10 +6,16 @@ import { CoursesIcon, FashionIcon, FilmsIcon, GamingIcon, HistoryIcon, HomeIcon,
         MusicIcon, NewsIcon, PlaylistIcon, PodcastsIcon, ShoppingIcon, ShortsIcon, SportsIcon, SubscriptionIcon, 
         TrendingIcon, WatchLaterIcon, YourChannelIcon, YourVideosIcon
 } from '../../assets/icons.jsx';
+import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
+  const menuVal = useSelector((state) => state.menu.toggle);
+  console.log(menuVal);
+  
   return (
-    <aside className='border-r border-gray-200 p-3 text-[13px] h-[calc(100vh-50px)] overflow-y-scroll sm:flex flex-col  hidden '>
+    <aside className={` border-r border-gray-200 p-3 text-[13px] h-[calc(100vh-50px)] 
+      overflow-y-scroll lg:min-w-[13rem] sm:min-w-[4rem] relative sm:flex flex-col  ${ menuVal ? "block" : "hidden"}` }
+    >
         <SidebarLinks icon={HomeIcon} label="Home" class="w-[22px] "/>
         <SidebarLinks icon={ShortsIcon} label="Shorts" class="w-[22px]" />
         <SidebarLinks icon={SubscriptionIcon} label="Subscriptions" class="w-[21px]" />
